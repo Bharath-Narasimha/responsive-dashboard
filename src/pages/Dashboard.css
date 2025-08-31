@@ -1,0 +1,335 @@
+.dashboard {
+  min-height: 100%;
+  animation: fadeIn var(--transition-normal) ease-out;
+}
+
+.dashboard.loading {
+  pointer-events: none;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  gap: var(--spacing-lg);
+}
+
+.header-content {
+  flex: 1;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+  line-height: 1.2;
+}
+
+.dashboard-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.refresh-button {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.refresh-button:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.refresh-button:active {
+  transform: translateY(0);
+}
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+/* Metrics Section */
+.metrics-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* Charts Section */
+.charts-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.chart-item {
+  min-height: 400px;
+}
+
+.chart-item.large {
+  grid-column: span 1;
+}
+
+/* Bottom Section */
+.bottom-section {
+  margin-bottom: var(--spacing-2xl);
+}
+
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.activity-item {
+  min-height: 450px;
+}
+
+/* Loading Skeleton */
+.dashboard-skeleton {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.metrics-skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.skeleton-card {
+  height: 140px;
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: var(--radius-lg);
+}
+
+.charts-skeleton {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.skeleton-chart {
+  height: 350px;
+  background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: var(--radius-lg);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-item.large {
+    grid-column: span 1;
+  }
+
+  .bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .dashboard-title {
+    font-size: 1.75rem;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .charts-grid {
+    gap: var(--spacing-md);
+  }
+
+  .bottom-grid {
+    gap: var(--spacing-md);
+  }
+
+  .chart-item,
+  .activity-item {
+    min-height: 300px;
+  }
+
+  .charts-skeleton {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 0;
+  }
+
+  .dashboard-title {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-subtitle {
+    font-size: 0.875rem;
+  }
+
+  .refresh-button {
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: 0.8rem;
+  }
+
+  .metrics-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .charts-grid,
+  .bottom-grid {
+    gap: var(--spacing-sm);
+  }
+
+  .metrics-skeleton {
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Grid Item Animations */
+.metrics-grid > div {
+  animation: slideUp var(--transition-normal) ease-out;
+  animation-fill-mode: both;
+}
+
+.metrics-grid > div:nth-child(1) { animation-delay: 0ms; }
+.metrics-grid > div:nth-child(2) { animation-delay: 100ms; }
+.metrics-grid > div:nth-child(3) { animation-delay: 200ms; }
+.metrics-grid > div:nth-child(4) { animation-delay: 300ms; }
+
+.chart-item,
+.activity-item {
+  animation: slideUp var(--transition-normal) ease-out;
+  animation-delay: 400ms;
+  animation-fill-mode: both;
+}
+
+/* Error States */
+.dashboard.error {
+  text-align: center;
+  padding: var(--spacing-2xl);
+}
+
+.error-message {
+  font-size: 1.125rem;
+  color: var(--color-error);
+  margin-bottom: var(--spacing-lg);
+}
+
+.error-retry {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.error-retry:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Performance optimization */
+.chart-item,
+.activity-item {
+  contain: layout style paint;
+}
+
+/* Print styles */
+@media print {
+  .dashboard-header {
+    border-bottom: 2px solid #000;
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .refresh-button {
+    display: none;
+  }
+
+  .metrics-grid,
+  .charts-grid,
+  .bottom-grid {
+    gap: var(--spacing-md);
+  }
+
+  .chart-item,
+  .activity-item {
+    break-inside: avoid;
+    min-height: auto;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .dashboard-title {
+    font-weight: 800;
+  }
+
+  .refresh-button {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .dashboard,
+  .metrics-grid > div,
+  .chart-item,
+  .activity-item,
+  .skeleton-card,
+  .skeleton-chart,
+  .refresh-button {
+    animation: none;
+    transition: none;
+  }
+
+  .refresh-button:hover {
+    transform: none;
+  }
+}
