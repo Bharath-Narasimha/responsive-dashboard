@@ -13,7 +13,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const dispatch = useAppDispatch();
-  const { sidebarOpen, mobileView } = useAppSelector((state) => state.app);
+  const { sidebarOpen } = useAppSelector((state) => state.app);
 
   useEffect(() => {
     const handleResize = () => {
